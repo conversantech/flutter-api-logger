@@ -1,12 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:cross_file/cross_file.dart';
 import '../models/api_log_model.dart';
 import '../services/api_log_service.dart';
 import 'api_log_detail_screen.dart';
@@ -168,9 +166,10 @@ class _ApiLogListScreenState extends State<ApiLogListScreen> {
       if (!mounted) return;
 
       final box = context.findRenderObject() as RenderBox?;
+      // ignore: deprecated_member_use
       await Share.shareXFiles(
         [XFile(file.path)],
-        text: 'API Logs Export - Session $_sessionName',
+        subject: 'API Logs Export - Session $_sessionName',
         sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size,
       );
     } catch (e) {
@@ -671,7 +670,7 @@ class _ApiLogListScreenState extends State<ApiLogListScreen> {
                 height: 40,
                 margin: const EdgeInsets.only(right: 4),
                 decoration: BoxDecoration(
-                  color: colorScheme.surfaceVariant.withOpacity(0.6),
+                  color: colorScheme.surfaceContainerHighest.withOpacity(0.6),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 alignment: Alignment.center,

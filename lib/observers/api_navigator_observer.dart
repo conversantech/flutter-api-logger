@@ -31,10 +31,8 @@ class ApiNavigatorObserver extends NavigatorObserver {
       return;
     }
 
-    print('route is MaterialPageRoute : ${route is MaterialPageRoute}');
     if (route is MaterialPageRoute) {
       final widget = route.builder(route.navigator!.context);
-      print('widget.runtimeType.toString(): ${widget.runtimeType.toString()}');
       ScreenTracker().updateScreen(widget.runtimeType.toString());
       return;
     }

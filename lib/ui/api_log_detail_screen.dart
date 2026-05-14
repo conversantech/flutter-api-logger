@@ -89,7 +89,7 @@ ${log.formattedResponseBody}
                   height: 40,
                   margin: const EdgeInsets.only(right: 4),
                   decoration: BoxDecoration(
-                    color: colorScheme.surfaceVariant.withOpacity(0.6),
+                    color: colorScheme.surfaceContainerHighest.withOpacity(0.6),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   alignment: Alignment.center,
@@ -435,7 +435,7 @@ class _CodeBlock extends StatelessWidget {
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: isDark
-            ? colorScheme.surfaceVariant.withOpacity(0.5)
+            ? colorScheme.surfaceContainerHighest.withOpacity(0.5)
             : const Color(0xFFF6F8FA),
         borderRadius: BorderRadius.circular(8),
         border: Border.all(

@@ -213,7 +213,7 @@ class _SessionCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: isCurrent
                 ? colorScheme.primaryContainer.withOpacity(0.45)
-                : colorScheme.surfaceVariant.withOpacity(0.35),
+                : colorScheme.surfaceContainerHighest.withOpacity(0.35),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: isCurrent

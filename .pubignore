@@ -1,0 +1,10 @@
+# Exclude build artifacts
+/build/
+/example/build/
+
+# Exclude IDE and OS files
+.DS_Store
+.dart_tool/
+.idea/
+.vscode/
+*.log

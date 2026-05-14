@@ -8,6 +8,7 @@ import 'observers/api_navigator_observer.dart';
 import 'ui/api_session_list_screen.dart';
 export 'widgets/api_debugger_wrapper.dart';
 export 'observers/api_navigator_observer.dart';
+export 'models/smtp_config.dart';
 
 class ApiDebugger {
   /// Initialize the API Debugger.

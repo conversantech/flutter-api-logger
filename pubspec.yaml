@@ -1,0 +1,27 @@
+name: api_sequence_debugger
+description: A production-ready API sequence debugger for Flutter. Intercepts all Dio and HTTP calls globally.
+version: 1.0.0
+homepage: https://github.com/conversantech/api_sequence_debugger
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+  flutter: '>=3.16.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  path: ^1.9.0
+  path_provider: ^2.1.5
+  mailer: ^6.1.0
+  share_plus: ^12.0.1
+  shared_preferences: ^2.3.2
+  sqflite: ^2.4.0
+  uuid: ^4.5.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true

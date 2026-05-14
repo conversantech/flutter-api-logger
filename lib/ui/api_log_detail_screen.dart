@@ -83,33 +83,32 @@ ${log.formattedResponseBody}
           backgroundColor: colorScheme.surface,
           elevation: 0,
           scrolledUnderElevation: 2,
-          titleSpacing: _isSearching ? 0 : null,
+          leading: _isSearching
+              ? IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: _clearSearch,
+                )
+              : null,
           title: _isSearching
-              ? Container(
-                  height: 40,
-                  margin: const EdgeInsets.only(right: 4),
-                  decoration: BoxDecoration(
-                    color: colorScheme.surfaceContainerHighest.withOpacity(0.6),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: TextField(
-                    controller: _searchController,
-                    autofocus: true,
-                    style:
-                        TextStyle(color: colorScheme.onSurface, fontSize: 15),
-                    decoration: InputDecoration(
-                      isDense: true,
-                      hintText: 'Search in log details...',
-                      hintStyle: TextStyle(
-                        color: colorScheme.onSurfaceVariant.withOpacity(0.7),
-                        fontSize: 14,
-                      ),
-                      border: InputBorder.none,
-                      icon: Icon(Icons.search,
-                          size: 18, color: colorScheme.onSurfaceVariant),
+              ? TextField(
+                  controller: _searchController,
+                  autofocus: true,
+                  textAlignVertical: TextAlignVertical.center,
+                  style: TextStyle(color: colorScheme.onSurface, fontSize: 16),
+                  decoration: InputDecoration(
+                    hintText: 'Search in log details...',
+                    hintStyle: TextStyle(
+                      color: colorScheme.onSurfaceVariant.withOpacity(0.7),
+                      fontSize: 15,
                     ),
+                    border: InputBorder.none,
+                    suffixIcon: _searchQuery.isNotEmpty
+                        ? IconButton(
+                            icon: const Icon(Icons.clear_rounded),
+                            onPressed: () => _searchController.clear(),
+                            tooltip: 'Clear text',
+                          )
+                        : null,
                   ),
                 )
               : const Text(
@@ -117,13 +116,7 @@ ${log.formattedResponseBody}
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
           actions: [
-            if (_isSearching)
-              IconButton(
-                icon: const Icon(Icons.close_rounded),
-                tooltip: 'Clear search',
-                onPressed: _clearSearch,
-              )
-            else ...[
+            if (!_isSearching) ...[
               IconButton(
                 icon: const Icon(Icons.search_rounded),
                 tooltip: 'Search in details',

@@ -664,35 +664,35 @@ class _ApiLogListScreenState extends State<ApiLogListScreen> {
     return Scaffold(
       backgroundColor: colorScheme.surface,
       appBar: AppBar(
-        titleSpacing: _isSearching ? 0 : null,
+        leading: _isSearching
+            ? IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: _clearSearch,
+              )
+            : null,
         title: _isSearching
-            ? Container(
-                height: 40,
-                margin: const EdgeInsets.only(right: 4),
-                decoration: BoxDecoration(
-                  color: colorScheme.surfaceContainerHighest.withOpacity(0.6),
-                  borderRadius: BorderRadius.circular(10),
+            ? TextField(
+                controller: _searchController,
+                autofocus: true,
+                textAlignVertical: TextAlignVertical.center,
+                style: TextStyle(
+                  color: colorScheme.onSurface,
+                  fontSize: 16,
                 ),
-                alignment: Alignment.center,
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: TextField(
-                  controller: _searchController,
-                  autofocus: true,
-                  style: TextStyle(
-                    color: colorScheme.onSurface,
+                decoration: InputDecoration(
+                  hintText: 'Search URL, method, status...',
+                  hintStyle: TextStyle(
+                    color: colorScheme.onSurfaceVariant.withOpacity(0.7),
                     fontSize: 15,
                   ),
-                  decoration: InputDecoration(
-                    isDense: true,
-                    hintText: 'Search URL, method, status...',
-                    hintStyle: TextStyle(
-                      color: colorScheme.onSurfaceVariant.withOpacity(0.7),
-                      fontSize: 14,
-                    ),
-                    border: InputBorder.none,
-                    icon: Icon(Icons.search,
-                        size: 18, color: colorScheme.onSurfaceVariant),
-                  ),
+                  border: InputBorder.none,
+                  suffixIcon: _searchQuery.isNotEmpty
+                      ? IconButton(
+                          icon: const Icon(Icons.clear_rounded),
+                          onPressed: () => _searchController.clear(),
+                          tooltip: 'Clear text',
+                        )
+                      : null,
                 ),
               )
             : Column(
@@ -713,13 +713,7 @@ class _ApiLogListScreenState extends State<ApiLogListScreen> {
         backgroundColor: colorScheme.surface,
         scrolledUnderElevation: 2,
         actions: [
-          if (_isSearching)
-            IconButton(
-              icon: const Icon(Icons.close_rounded),
-              tooltip: 'Clear search',
-              onPressed: _clearSearch,
-            )
-          else ...[
+          if (!_isSearching) ...[
             IconButton(
               icon: const Icon(Icons.search_rounded),
               tooltip: 'Search logs',

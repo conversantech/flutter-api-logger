@@ -1,4 +1,4 @@
-# API Sequence Debugger ⚡
+# Flutter API Logger ⚡
 
 A production-ready, **zero-boilerplate** Flutter package that automatically tracks API calls and their call sequences. It intercepts all outgoing network traffic **globally** at the `dart:io` level — no modifications needed to your existing `Dio`, `http`, or `HttpClient` code.
 
@@ -28,18 +28,11 @@ A production-ready, **zero-boilerplate** Flutter package that automatically trac
 
 Add the dependency to your `pubspec.yaml`:
 
-**Local path (development):**
 ```yaml
 dependencies:
-  api_sequence_debugger:
-    path: ../api_call_sequence_debugger
+  flutter_api_logger: ^1.0.0
 ```
 
-**From pub.dev (when published):**
-```yaml
-dependencies:
-  api_sequence_debugger: ^1.0.0
-```
 
 Then run:
 ```bash
@@ -56,7 +49,7 @@ Call `ApiDebugger.initialize()` **before** `runApp()`. You **must** call `Widget
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:api_sequence_debugger/api_sequence_debugger.dart';
+import 'package:flutter_api_logger/flutter_api_logger.dart';
 
 void main() async {
   // CRITICAL: Must be called before any async work.
@@ -127,7 +120,7 @@ Navigator.push(
 Control the debugger from anywhere in your code:
 
 ```dart
-import 'package:api_sequence_debugger/api_sequence_debugger.dart';
+import 'package:flutter_api_logger/flutter_api_logger.dart';
 
 // Enable logging (starts a new session, persists state)
 await ApiDebugger.enable();
@@ -273,59 +266,6 @@ Represents a single debugging session (one per app launch when enabled).
 
 ---
 
-## 🏗️ Architecture
-
-The package is structured into these layers:
-
-```
-lib/
-├── api_sequence_debugger.dart      # Public API entrypoint (ApiDebugger class)
-├── core/
-│   ├── http_overrides.dart         # Sets HttpOverrides.global
-│   ├── logging_http_client.dart    # Wraps HttpClient, intercepts all methods
-│   ├── logging_http_request.dart   # Intercepts request; captures body & headers
-│   └── logging_http_response.dart  # Intercepts response stream; captures body
-├── models/
-│   ├── api_log_model.dart          # Data model for a single API call
-│   └── api_session_model.dart      # Data model for a session
-├── observers/
-│   └── api_navigator_observer.dart # NavigatorObserver for screen name tracking
-├── services/
-│   ├── api_log_service.dart        # Singleton: state, stream, and session mgmt
-│   ├── api_database_service.dart   # Singleton: SQLite read/write operations
-│   └── screen_tracker.dart        # Singleton: tracks the current screen name
-├── ui/
-│   ├── api_session_list_screen.dart # Session list UI
-│   ├── api_log_list_screen.dart    # Log list UI for a session
-│   └── api_log_detail_screen.dart  # Detailed view with request/response tabs
-└── widgets/
-    └── api_debugger_wrapper.dart   # GestureDetector wrapper for the secret tap
-```
-
-**How Interception Works:**
-
-1. `ApiDebugger.initialize()` sets `HttpOverrides.global = LoggingHttpOverrides()`.
-2. Every `HttpClient` created in the app is replaced by `LoggingHttpClient`.
-3. `LoggingHttpClient` wraps every request in `LoggingHttpClientRequest`, which captures the outgoing body and headers.
-4. On `.close()`, the request wraps the response in `LoggingHttpClientResponse`, which listens to the response byte stream and captures the body when done.
-5. The captured data is assembled into an `ApiLogModel` and passed to `ApiLogService.addLog()`, which persists it to SQLite and updates the in-memory stream.
-
----
-
-## 🔧 Dependencies
-
-| Package | Version | Purpose |
-|---|---|---|
-| `sqflite` | `^2.4.2` | SQLite database for persisting logs and sessions. |
-| `shared_preferences` | `^2.5.4` | Persisting the enabled/disabled toggle state. |
-| `uuid` | `^4.5.2` | Generating unique IDs for sessions and logs. |
-| `path` | `^1.9.1` | Resolving the database file path. |
-| `mailer` | `^6.1.0` | Sending HTML email reports via SMTP. |
-| `share_plus` | `^12.0.1` | Sharing log files via system share sheet. |
-| `path_provider` | `^2.1.5` | Managing temporary files for sharing/emailing. |
-
----
-
 ## ❌ Limitations
 
 - **🌐 No Web Support**: `HttpOverrides` and `dart:io` are not available on Flutter Web. The package silently no-ops on Web.
@@ -355,6 +295,12 @@ Contributions are welcome! Please feel free to open an issue or submit a Pull Re
 
 ---
 
-## 📄 License
+## Created & Maintained By
 
-This package is distributed under the MIT License. See `LICENSE` for more information.
+This package is created and maintained by [Conversantech](https://conversantech.com).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Copyright (c) 2026 Conversantech.
+

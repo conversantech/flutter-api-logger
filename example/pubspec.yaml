@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  api_sequence_debugger:
+  flutter_api_logger:
     path: ../
 
 dev_dependencies:

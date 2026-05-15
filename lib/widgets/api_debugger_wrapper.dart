@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/api_log_service.dart';
-import '../api_sequence_debugger.dart';
+import '../flutter_api_logger.dart';
 
 class ApiDebuggerWrapper extends StatefulWidget {
   final Widget child;

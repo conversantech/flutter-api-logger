@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:api_sequence_debugger/api_sequence_debugger.dart';
+import 'package:flutter_api_logger/flutter_api_logger.dart';
 import 'dart:io';
 import 'dart:convert';
 

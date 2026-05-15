@@ -1,6 +1,9 @@
 # 1.0.0
 
-* Initial release of `api_sequence_debugger`.
+* Initial release of `flutter_api_logger`.
+* Updated Flutter SDK minimum requirement to 3.24.0.
+* Updated Dart SDK minimum requirement to 3.5.0.
+* Broadened dependency version ranges for improved compatibility.
 * Global API interception using `HttpOverrides`.
 * SQLite persistence for sessions and logs.
 * Secret tap gesture activation (default 6 taps).

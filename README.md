@@ -30,7 +30,7 @@ Add the dependency to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_api_logger: ^1.0.0
+  flutter_api_tracker: ^1.0.0
 ```
 
 
@@ -49,7 +49,7 @@ Call `ApiDebugger.initialize()` **before** `runApp()`. You **must** call `Widget
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:flutter_api_logger/flutter_api_logger.dart';
+import 'package:flutter_api_tracker/flutter_api_tracker.dart';
 
 void main() async {
   // CRITICAL: Must be called before any async work.
@@ -120,7 +120,7 @@ Navigator.push(
 Control the debugger from anywhere in your code:
 
 ```dart
-import 'package:flutter_api_logger/flutter_api_logger.dart';
+import 'package:flutter_api_tracker/flutter_api_tracker.dart';
 
 // Enable logging (starts a new session, persists state)
 await ApiDebugger.enable();

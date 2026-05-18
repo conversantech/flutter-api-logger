@@ -1,6 +1,6 @@
 # 1.0.0
 
-* Initial release of `flutter_api_logger`.
+* Initial release of `flutter_api_tracker`.
 * Updated Flutter SDK minimum requirement to 3.24.0.
 * Updated Dart SDK minimum requirement to 3.5.0.
 * Broadened dependency version ranges for improved compatibility.

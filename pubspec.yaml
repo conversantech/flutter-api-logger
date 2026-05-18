@@ -1,4 +1,4 @@
-name: flutter_api_logger
+name: flutter_api_tracker
 description: A production-ready API sequence debugger for Flutter. Intercepts all Dio and HTTP calls globally.
 version: 1.0.0
 homepage: https://github.com/conversantech/flutter-api-logger

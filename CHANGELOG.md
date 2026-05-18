@@ -1,3 +1,7 @@
+# 1.0.1
+
+* Updated `README.md` to reflect the new package name.
+
 # 1.0.0
 
 * Initial release of `flutter_api_tracker`.

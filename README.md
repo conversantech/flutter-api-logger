@@ -1,4 +1,4 @@
-# Flutter API Logger ⚡
+# Flutter API Tracker ⚡
 
 A production-ready, **zero-boilerplate** Flutter package that automatically tracks API calls and their call sequences. It intercepts all outgoing network traffic **globally** at the `dart:io` level — no modifications needed to your existing `Dio`, `http`, or `HttpClient` code.
 

@@ -1,3 +1,11 @@
+# 1.0.2
+
+* Updated `mailer` dependency constraint to `'>=6.0.0 <8.0.0'` to support version `7.x.x`.
+* Configured analyzer overrides to ignore `deprecated_member_use` warnings, ensuring backward compatibility with Flutter `>=3.24.0` while passing analysis on modern SDKs.
+* Formatted all library files.
+* Updated `README.md` with instructions for running the example.
+* Updated `LICENSE` from MIT to BSD-3-Clause
+
 # 1.0.1
 
 * Updated `README.md` to reflect the new package name.

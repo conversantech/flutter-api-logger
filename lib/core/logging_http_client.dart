@@ -101,9 +101,9 @@ class LoggingHttpClient implements HttpClient {
       Uri url,
       String? proxyHost,
       int? proxyPort,
-    )?
-    f,
-  ) => _inner.connectionFactory = f;
+    )? f,
+  ) =>
+      _inner.connectionFactory = f;
 
   @override
   set keyLog(Function(String line)? callback) => _inner.keyLog = callback;
@@ -138,7 +138,8 @@ class LoggingHttpClient implements HttpClient {
     Uri url,
     String realm,
     HttpClientCredentials credentials,
-  ) => _inner.addCredentials(url, realm, credentials);
+  ) =>
+      _inner.addCredentials(url, realm, credentials);
 
   @override
   void addProxyCredentials(
@@ -146,18 +147,21 @@ class LoggingHttpClient implements HttpClient {
     int port,
     String realm,
     HttpClientCredentials credentials,
-  ) => _inner.addProxyCredentials(host, port, realm, credentials);
+  ) =>
+      _inner.addProxyCredentials(host, port, realm, credentials);
 
   @override
   set authenticate(
     Future<bool> Function(Uri url, String scheme, String? realm)? f,
-  ) => _inner.authenticate = f;
+  ) =>
+      _inner.authenticate = f;
 
   @override
   set authenticateProxy(
     Future<bool> Function(String host, int port, String scheme, String? realm)?
-    f,
-  ) => _inner.authenticateProxy = f;
+        f,
+  ) =>
+      _inner.authenticateProxy = f;
 
   @override
   set findProxy(String Function(Uri url)? f) => _inner.findProxy = f;
@@ -165,7 +169,8 @@ class LoggingHttpClient implements HttpClient {
   @override
   set badCertificateCallback(
     bool Function(X509Certificate cert, String host, int port)? callback,
-  ) => _inner.badCertificateCallback = callback;
+  ) =>
+      _inner.badCertificateCallback = callback;
 
   @override
   void close({bool force = false}) => _inner.close(force: force);

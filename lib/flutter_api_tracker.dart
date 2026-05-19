@@ -90,12 +90,14 @@ class ApiDebugger {
     }
 
     if (!ApiLogService().isInitialized) {
-      debugPrint('ApiDebugger Warning: ApiDebugger.initialize() was not called in main(). '
+      debugPrint(
+          'ApiDebugger Warning: ApiDebugger.initialize() was not called in main(). '
           'Persistence and some features may not work correctly.');
     }
 
     if (HttpOverrides.current is! LoggingHttpOverrides) {
-      debugPrint('ApiDebugger Warning: HttpOverrides.current is not LoggingHttpOverrides. '
+      debugPrint(
+          'ApiDebugger Warning: HttpOverrides.current is not LoggingHttpOverrides. '
           'API calls will NOT be intercepted. Ensure ApiDebugger.initialize() is called in main().');
     }
 
